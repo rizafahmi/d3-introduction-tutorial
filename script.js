@@ -8,11 +8,13 @@ const svg = d3.select('#chartArea').append('svg')
   .attr('height', 300)
   .style('background', '#cacaca')
 
-const multiplier = 8
-
 const yScale = d3.scaleLinear()
   .domain([0, d3.max(dataset)])
   .range([0, 300])
+
+const colorScale = d3.scaleLinear()
+  .domain([0, d3.max(dataset)])
+  .range(['peru', 'teal'])
 
 svg.selectAll('rect')
   .data(dataset)
@@ -29,3 +31,4 @@ svg.selectAll('rect')
   .attr('height', (d) => {
     return yScale(d)
   })
+  .attr('fill', colorScale)
