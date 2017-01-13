@@ -1,5 +1,7 @@
-/* global d3 */
-let dataset = [5, 10, 15, 20, 25]
+/* global d3 _ */
+let dataset = _.range(15).map(() => {
+  return Math.random() * 50
+})
 
 const svg = d3.select('#chartArea').append('svg')
   .attr('width', 400)
@@ -9,7 +11,7 @@ const svg = d3.select('#chartArea').append('svg')
 const multiplier = 8
 
 const yScale = d3.scaleLinear()
-  .domain([0, 25])
+  .domain([0, d3.max(dataset)])
   .range([0, 300])
 
 svg.selectAll('rect')
