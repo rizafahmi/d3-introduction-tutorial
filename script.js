@@ -16,6 +16,10 @@ const colorScale = d3.scaleLinear()
   .domain([0, d3.max(dataset)])
   .range(['peru', 'teal'])
 
+const mouseover = (d, i) => {
+  debugger
+}
+
 svg.selectAll('rect')
   .data(dataset)
   .enter()
@@ -32,3 +36,9 @@ svg.selectAll('rect')
     return yScale(d)
   })
   .attr('fill', colorScale)
+  .on('mouseover', function (d, i) {
+    d3.select(this).style('fill', '#bada55')
+  })
+  .on('mouseout', function (d, i) {
+    d3.select(this).style('fill', colorScale(d))
+  })
